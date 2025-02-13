@@ -1,7 +1,7 @@
 package org.opensearch.data.example.service;
 
 import org.opensearch.data.example.entity.Movie;
-import org.opensearch.data.example.entity.MovieDoc;
+import org.opensearch.data.example.model.MovieDoc;
 import org.opensearch.data.example.repository.MovieElasticsearchRepository;
 import org.opensearch.data.example.repository.MovieRepository;
 import org.springframework.stereotype.Service;

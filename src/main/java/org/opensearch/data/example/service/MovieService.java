@@ -1,7 +1,7 @@
 package org.opensearch.data.example.service;
 
 import org.opensearch.data.example.entity.Movie;
-import org.opensearch.data.example.entity.MovieDoc;
+import org.opensearch.data.example.model.MovieDoc;
 import org.opensearch.data.example.repository.MovieElasticsearchRepository;
 import org.opensearch.data.example.repository.MovieRepository;
 import org.springframework.data.domain.Page;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static java.util.Comparator.comparingInt;
+import static java.util.Comparator.comparingDouble;
 
 @Service
 public class MovieService {
@@ -46,7 +46,7 @@ public class MovieService {
         Set<Long> ids = idsMap.keySet();
 
         List<Movie> moviesFromDb = movieRepository.findAllById(ids);
-        moviesFromDb.sort(comparingInt(movie -> idsMap.get(movie.getId())));
+        moviesFromDb.sort(comparingDouble(Movie::getRatingBall));
 
         return new PageImpl<>(moviesFromDb, pageable, searchResults.getTotalElements());
     }

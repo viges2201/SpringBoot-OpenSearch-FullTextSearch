@@ -1,4 +1,4 @@
-package org.opensearch.data.example.entity;
+package org.opensearch.data.example.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

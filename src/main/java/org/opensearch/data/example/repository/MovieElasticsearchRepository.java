@@ -1,13 +1,19 @@
 package org.opensearch.data.example.repository;
 
-import org.opensearch.data.example.entity.MovieDoc;
+import org.opensearch.data.example.model.MovieDoc;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.annotations.Query;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
+import org.springframework.stereotype.Repository;
 
-//@Repository
+@Repository
 public interface MovieElasticsearchRepository extends ElasticsearchRepository<MovieDoc, Long> {
+    /**
+     * Объект match_phrase учитывает порядок слов, а multi_match может комбинировать совпадения из нескольких полей.
+     * Если вы задали boost для полей или условий (например, "boost": 3),
+     * это увеличивает вклад этих условий в итоговый _score
+     */
     @Query("""
             {
               "bool": {

@@ -1,8 +1,10 @@
 package org.opensearch.data.example.model;
 
+import lombok.Getter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
+@Getter
 @Document(indexName = "books")
 public class Book {
 
@@ -17,36 +19,16 @@ public class Book {
 
     private String isbn;
 
-    public String getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public int getPublicationYear() {
-        return publicationYear;
     }
 
     public void setPublicationYear(int publicationYear) {
         this.publicationYear = publicationYear;
     }
 
-    public String getAuthorName() {
-        return authorName;
-    }
-
     public void setAuthorName(String authorName) {
         this.authorName = authorName;
-    }
-
-    public String getIsbn() {
-        return isbn;
     }
 
     public void setIsbn(String isbn) {
