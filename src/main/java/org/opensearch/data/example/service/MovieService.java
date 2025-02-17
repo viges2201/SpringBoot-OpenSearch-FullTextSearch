@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static java.util.Comparator.comparingDouble;
+import static java.util.Comparator.comparingInt;
 
 @Service
 public class MovieService {
@@ -46,7 +46,7 @@ public class MovieService {
         Set<Long> ids = idsMap.keySet();
 
         List<Movie> moviesFromDb = movieRepository.findAllById(ids);
-        moviesFromDb.sort(comparingDouble(Movie::getRatingBall));
+        moviesFromDb.sort(comparingInt(movie -> idsMap.get(movie.getId())));
 
         return new PageImpl<>(moviesFromDb, pageable, searchResults.getTotalElements());
     }
